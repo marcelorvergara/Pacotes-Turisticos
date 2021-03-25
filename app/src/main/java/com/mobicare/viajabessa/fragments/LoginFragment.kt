@@ -2,6 +2,7 @@ package com.mobicare.viajabessa.fragments
 
 import android.content.Context
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -49,7 +50,9 @@ class LoginFragment : Fragment() {
 
         //realizar o login no firebase auth
         binding.btnLogin.setOnClickListener { view : View ->
-            auth.signInWithEmailAndPassword(binding.edtLogin.toString(),binding.edtPass.toString())
+            Log.i("login", binding.edtLogin.text.toString())
+            Log.i("login", binding.edtPass.text.toString())
+            auth.signInWithEmailAndPassword(binding.edtLogin.text.toString(),binding.edtPass.text.toString())
                 .addOnCompleteListener(requireActivity()){ task ->
                     if (task.isSuccessful){
                         //cachear o user atual
