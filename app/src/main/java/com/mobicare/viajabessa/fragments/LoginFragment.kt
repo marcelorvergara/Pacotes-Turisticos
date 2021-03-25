@@ -7,7 +7,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
+import androidx.core.content.ContextCompat.getSystemService
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -50,15 +52,18 @@ class LoginFragment : Fragment() {
 
         //realizar o login no firebase auth
         binding.btnLogin.setOnClickListener { view : View ->
-            Log.i("login", binding.edtLogin.text.toString())
-            Log.i("login", binding.edtPass.text.toString())
-            auth.signInWithEmailAndPassword(binding.edtLogin.text.toString(),binding.edtPass.text.toString())
+
+            auth.signInWithEmailAndPassword(binding.edtLogin.text.toString().trim(),binding.edtPass.text.toString().trim())
                 .addOnCompleteListener(requireActivity()){ task ->
                     if (task.isSuccessful){
-                        //cachear o user atual
-                        user = auth.currentUser
+
                         //ir para tela de inclusão de pacotes
                         view.findNavController().navigate(R.id.action_loginFragment_to_novoPacoteFragment)
+
+                        //esconder o teclado
+                        val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                        imm.hideSoftInputFromWindow(requireView().windowToken, 0)
+
                     } else {
                         Toast.makeText(requireContext(), "Falha na autenticação. Verifique o login e a senha.", Toast.LENGTH_SHORT).show()
                     }

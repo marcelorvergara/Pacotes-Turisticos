@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">viajabessa</string>
+    <string name="app_name">Viajabessa: Pacotes </string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="acesso_restrito">Acesso Restrito</string>
@@ -9,4 +9,16 @@
     <string name="entre_com_seu_password">entre com seu password</string>
     <string name="loginBtn">Login</string>
     <string name="voltarBtn">Voltar</string>
+    <string name="nome_do_pacote_t_tulo">Nome do Pacote (Título):</string>
+    <string name="entre_com_o_t_tulo">entre com o título</string>
+    <string name="descri_o_do_pacote">Descrição do Pacote:</string>
+    <string name="valor_do_pacote">Valor do Pacote:</string>
+    <string name="entre_com_o_valor_do_pacote">entre com o valor do pacote</string>
+    <string name="entre_com_a_descri_o_do_pacote">entre com a descrição do pacote</string>
+    <string name="imagem_do_pacote">Imagem do Pacote:</string>
+    <string name="entre_com_a_url_da_imagem_do_pacote">entre com a URL da imagem do pacote</string>
+    <string name="novo_pacote">Novo Pacote</string>
+    <string name="inserir">Inserir</string>
+    <string name="voltar">Voltar</string>
+    <string name="logout">LogOut</string>
 </resources>

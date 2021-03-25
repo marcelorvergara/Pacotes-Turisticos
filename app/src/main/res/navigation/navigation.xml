@@ -28,7 +28,11 @@
     </fragment>
     <fragment
         android:id="@+id/novoPacoteFragment"
-        android:name="com.mobicare.viajabessa.fragments.NovoPacoteFragment"
+        android:name="com.mobicare.viajabessa.fragments.novopacote.NovoPacoteFragment"
         android:label="fragment_novo_pacote"
-        tools:layout="@layout/fragment_novo_pacote" />
+        tools:layout="@layout/fragment_novo_pacote" >
+        <action
+            android:id="@+id/action_novoPacoteFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>
