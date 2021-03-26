@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{() -> clickListener.onClick()">
+        android:onClick="@{() -> clickListener.onClick(pacote)}">
 
         <TextView
             android:id="@+id/txtTituloPkt"
@@ -24,10 +24,10 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/nome_do_pacote_t_tulo"
-            app:titulo="@{pacote}"
+            tools:text="@string/nome_do_pacote_t_tulo"
             app:layout_constraintStart_toEndOf="@+id/imgPkt"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:titulo="@{pacote}" />
 
         <TextView
             android:id="@+id/txtValor"
@@ -35,10 +35,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:text="@string/valor_do_pacote"
-            app:valor="@{pacote}"
+            tools:text="@string/valor_do_pacote"
             app:layout_constraintBaseline_toBaselineOf="@+id/txtTituloPkt"
-            app:layout_constraintStart_toEndOf="@+id/txtTituloPkt" />
+            app:layout_constraintStart_toEndOf="@+id/txtTituloPkt"
+            app:valor="@{pacote}" />
 
         <ImageView
             android:id="@+id/imgPkt"

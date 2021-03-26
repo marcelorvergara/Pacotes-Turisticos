@@ -27,4 +27,17 @@ class HomeViewModel : ViewModel() {
             _pkts.value = pacotesList
         }
     }
+
+    //navegação
+    private val _navegaDetalhePacote = MutableLiveData<Pacote>()
+    val navegaDetalhePacote
+        get() = _navegaDetalhePacote
+
+    fun onPacoteClicked(pkt: Pacote){
+        _navegaDetalhePacote.value = pkt
+    }
+
+    fun onPacoteDetalheNavegado(){
+        _navegaDetalhePacote.value = null
+    }
 }

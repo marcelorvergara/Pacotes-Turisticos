@@ -25,6 +25,9 @@
         <action
             android:id="@+id/action_homeFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_detalhePacoteFragment"
+            app:destination="@id/detalhePacoteFragment" />
     </fragment>
     <fragment
         android:id="@+id/novoPacoteFragment"
@@ -49,5 +52,14 @@
         <action
             android:id="@+id/action_imagemPacoteFragment_to_novoPacoteFragment"
             app:destination="@id/novoPacoteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalhePacoteFragment"
+        android:name="com.mobicare.viajabessa.fragments.detalhepacote.DetalhePacoteFragment"
+        android:label="fragment_detalhe_pacote"
+        tools:layout="@layout/fragment_detalhe_pacote" >
+        <argument
+            android:name="pacote"
+            app:argType="com.mobicare.viajabessa.fragments.home.Pacote" />
     </fragment>
 </navigation>

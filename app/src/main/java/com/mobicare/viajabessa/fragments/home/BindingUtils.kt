@@ -8,7 +8,7 @@ import com.squareup.picasso.Picasso
 
 @BindingAdapter("titulo")
 fun TextView.setTituloFormatado(item:Pacote){
-    text = (item.titulo)
+    text = ("Pacote ${item.titulo}")
 }
 
 @BindingAdapter("valor")

@@ -1,12 +1,12 @@
-package com.mobicare.viajabessa.fragments
+package com.mobicare.viajabessa.fragments.detalhepacote
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import com.mobicare.viajabessa.R
-
 
 
 /**
@@ -26,6 +26,9 @@ class DetalhePacoteFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        val args = DetalhePacoteFragmentArgs.fromBundle(requireArguments())
+        Toast.makeText(context,"Título do Pacote: ${args.pacote.titulo}",Toast.LENGTH_SHORT).show()
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_detalhe_pacote, container, false)
     }

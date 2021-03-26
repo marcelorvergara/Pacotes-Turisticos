@@ -1,19 +1,16 @@
 package com.mobicare.viajabessa.fragments.home
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.mobicare.viajabessa.databinding.PktItemViewBinding
-import com.squareup.picasso.Picasso
 
-class HomeAdapter: ListAdapter<Pacote, HomeAdapter.ViewHolder>(HomeDiffCallback()){
+class HomeAdapter(val clicklistener: HomeListener): ListAdapter<Pacote, HomeAdapter.ViewHolder>(HomeDiffCallback()){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = getItem(position)
-        holder.bind(item)
+        holder.bind(getItem(position)!!,clicklistener)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -21,14 +18,9 @@ class HomeAdapter: ListAdapter<Pacote, HomeAdapter.ViewHolder>(HomeDiffCallback(
     }
 
     class ViewHolder private constructor(val binding: PktItemViewBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(item:Pacote){
-//            val res = itemView.context.resources
-//            binding.txtTituloPkt.text = item.titulo
-//            binding.txtValor.text = item.valor
-//            Log.d("Imagem", item.imageUrl)
-//            if (item.imageUrl.startsWith("http", true)) {
-//                Picasso.get().load(item.imageUrl).into(binding.imgPkt)
-//            }
+
+        fun bind(item: Pacote, clickListener: HomeListener){
+            binding.clickListener = clickListener
             binding.pacote = item
             binding.executePendingBindings()
         }
@@ -40,9 +32,7 @@ class HomeAdapter: ListAdapter<Pacote, HomeAdapter.ViewHolder>(HomeDiffCallback(
                 return ViewHolder(binding)
             }
         }
-
     }
-
 }
 
 class HomeDiffCallback: DiffUtil.ItemCallback<Pacote>(){
@@ -55,6 +45,6 @@ class HomeDiffCallback: DiffUtil.ItemCallback<Pacote>(){
     }
 }
 
-class HomeListener(val clickListener: (pacoteId: String) -> Unit){
-    fun onClick(pacote: Pacote) = clickListener(pacote.uuid)
+class HomeListener(val clickListener: (pktId: Pacote) -> Unit){
+    fun onClick(pacote: Pacote) = clickListener(pacote)
 }
