@@ -1,19 +1,25 @@
 package com.mobicare.viajabessa.fragments.novopacote
 
+import android.net.Uri
 import android.util.Log
-import android.widget.Toast
+import android.widget.ImageView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.NavHostController
+import com.google.android.gms.tasks.Continuation
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.StorageReference
+import com.google.firebase.storage.UploadTask
 import com.mobicare.viajabessa.R
+import java.net.URI
+import java.util.*
 
 class NovoPacoteViewModel : ViewModel() {
-
-
 
     //logout + navegação
     private val _logout = MutableLiveData<Boolean>()
@@ -23,7 +29,6 @@ class NovoPacoteViewModel : ViewModel() {
     fun logoutFunc(){
         Firebase.auth.signOut()
         _logout.value = true
-
     }
 
     fun onLogoutCompleto(){
@@ -39,27 +44,31 @@ class NovoPacoteViewModel : ViewModel() {
         _resultadoInsert.value = false
     }
 
-    fun inserirDados(tit: String, desc: String, din: String, img: String){
-        Log.i("teste", tit)
+    //id do doc inserido no firebase
+    private val _docId = MutableLiveData<String>()
+    val docId : LiveData<String>
+        get() = _docId
+
+
+    fun inserirDados(tit: String, desc: String, din: String){
+        val uuid = UUID.randomUUID().toString()
         val db = Firebase.firestore
         val pacote = hashMapOf(
             "titulo" to tit,
             "descricao" to desc,
             "valor" to din,
-            "imagem" to img
+            "uuid" to uuid
         )
-        db.collection("pacotes")
-            .add(pacote)
-            .addOnSuccessListener { documentRef ->
-                Log.i("teste", documentRef.id)
+        db.collection("pacotes").document(uuid)
+            .set(pacote)
+            .addOnSuccessListener {
+                Log.i("TESTE", uuid)
+                _docId.value = uuid
                 _resultadoInsert.value = true
-
             }
             .addOnFailureListener { e ->
                 Log.i("teste", e.toString())
             }
     }
-
-
 
 }

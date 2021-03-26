@@ -1,7 +1,7 @@
 package com.mobicare.viajabessa.fragments.novopacote
 
-import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,13 +10,10 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
-import com.google.firebase.storage.StorageReference
 import com.mobicare.viajabessa.R
 import com.mobicare.viajabessa.databinding.FragmentNovoPacoteBinding
 
@@ -30,12 +27,6 @@ class NovoPacoteFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
     private lateinit var viewModel: NovoPacoteViewModel
-
-    //para a imagem
-    private val PICK_IMAGE_REQUEST = 71
-    private var filePath: Uri? = null
-    private var firebaseStore: FirebaseStorage? = null
-    private var storageReference: StorageReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,21 +57,18 @@ class NovoPacoteFragment : Fragment() {
         binding.btnLogout.setOnClickListener { viewModel.logoutFunc() }
 
         //inserir dados / binding para event handling
-        binding.btnInserir.setOnClickListener { viewModel.inserirDados(
+        binding.btnInserir.setOnClickListener {
+            //textos
+            viewModel.inserirDados(
             binding.edtTitulo.text.toString(),
             binding.edtDescricao.text.toString(),
-            binding.edtValor.text.toString(),
-            binding.edtImagem.text.toString()
-        )}
+            binding.edtValor.text.toString())
+        }
 
         viewModel.resultadoInsert.observe(viewLifecycleOwner, Observer { result ->
             if(result){
-                binding.edtTitulo.setText("")
-                binding.edtDescricao.setText("")
-                binding.edtValor.setText("")
-                binding.edtImagem.setText("")
-                Toast.makeText(requireContext(),"Informações inseridas com sucesso",Toast.LENGTH_SHORT).show()
-
+                findNavController().navigate(NovoPacoteFragmentDirections.actionNovoPacoteFragmentToImagemPacoteFragment(viewModel.docId.value.toString()))
+                Toast.makeText(requireContext(),"Informações inseridas. Escolha uma imagem para o pacote.",Toast.LENGTH_SHORT).show()
             }
         })
 

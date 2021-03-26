@@ -21,4 +21,6 @@
     <string name="inserir">Inserir</string>
     <string name="voltar">Voltar</string>
     <string name="logout">LogOut</string>
+    <string name="escolher_imagem">Imagem</string>
+    <string name="confirmar">Confirmar</string>
 </resources>
