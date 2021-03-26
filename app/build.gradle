@@ -75,4 +75,7 @@ dependencies {
 
     //ViewModel
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+
+    //revycler view
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 }

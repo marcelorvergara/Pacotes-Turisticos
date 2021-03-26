@@ -13,6 +13,7 @@ import android.widget.ImageView
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.tasks.Continuation
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.FirebaseFirestore
@@ -139,6 +140,7 @@ class ImagemPacoteFragment : Fragment() {
             .set(data, SetOptions.merge())
             .addOnSuccessListener { documentReference ->
                 Toast.makeText(requireContext(), "Salvo no Banco de Dados", Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.action_imagemPacoteFragment_to_novoPacoteFragment)
             }
             .addOnFailureListener { e ->
                 Toast.makeText(requireContext(), "Erro ao salvar no Banco de Dados", Toast.LENGTH_LONG).show()

@@ -46,6 +46,11 @@ class NovoPacoteFragment : Fragment() {
         //inicializando o view model
         viewModel = ViewModelProvider(this).get(NovoPacoteViewModel::class.java)
 
+        //voltar
+        binding.btnVolta.setOnClickListener {
+            findNavController().navigate(R.id.action_novoPacoteFragment_to_homeFragment)
+        }
+
         //logout do app e volta para tela inicial
         viewModel.logout.observe(viewLifecycleOwner, Observer { logout ->
             if(logout){
