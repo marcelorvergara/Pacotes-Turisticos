@@ -16,13 +16,13 @@ class HomeViewModel : ViewModel() {
 
     //ler dados do firestore
     fun getPacotes(){
-        var pacotesList : MutableList<Pacote> = mutableListOf()
+        val pacotesList : MutableList<Pacote> = mutableListOf()
         val db = Firebase.firestore.collection("pacotes").get()
         db.addOnSuccessListener { result ->
             for (doc in result){
                 val pacote = doc.toObject<Pacote>()
                 pacotesList.add(pacote)
-                Log.d("TESTE", "Doc ${doc.id} ==> ${doc.data}")
+                //Log.d("TESTE", "Doc ${doc.id} ==> ${doc.data}")
             }
             _pkts.value = pacotesList
         }

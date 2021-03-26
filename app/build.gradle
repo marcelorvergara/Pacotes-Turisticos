@@ -78,4 +78,7 @@ dependencies {
 
     //revycler view
     implementation 'androidx.recyclerview:recyclerview:1.1.0'
+
+    //imagem
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
