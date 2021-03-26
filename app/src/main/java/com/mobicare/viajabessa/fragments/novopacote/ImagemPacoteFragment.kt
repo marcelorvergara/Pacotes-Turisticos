@@ -126,7 +126,7 @@ class ImagemPacoteFragment : Fragment() {
 
             }
         }else{
-            Toast.makeText(requireContext(), "Please Upload an Image", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Escolha uma imagem para o pacote", Toast.LENGTH_SHORT).show()
         }
     }
 

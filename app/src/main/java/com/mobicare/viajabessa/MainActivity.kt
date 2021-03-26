@@ -25,13 +25,14 @@ class MainActivity : AppCompatActivity() {
         FirebaseApp.initializeApp(this);
 
         //pegar as informações
-//        Toast.makeText(this,"Versão do Android: ${android.os.Build.VERSION.RELEASE}",Toast.LENGTH_SHORT).show()
-//        Toast.makeText(this,"Marca do Aparelho: ${android.os.Build.MANUFACTURER}",Toast.LENGTH_SHORT).show()
-//        Toast.makeText(this,"Modelo do Aparelho: ${android.os.Build.MODEL}",Toast.LENGTH_SHORT).show()
+        //        Toast.makeText(this,"Versão do Android: ${android.os.Build.VERSION.RELEASE}",Toast.LENGTH_SHORT).show()
+        //        Toast.makeText(this,"Marca do Aparelho: ${android.os.Build.MANUFACTURER}",Toast.LENGTH_SHORT).show()
+        //        Toast.makeText(this,"Modelo do Aparelho: ${android.os.Build.MODEL}",Toast.LENGTH_SHORT).show()
 
         val sharedPreferences: SharedPreferences = this.getSharedPreferences( "arqInfos", MODE_PRIVATE)
 
         val sharedValue = sharedPreferences.getString("uuid","none")
+        //verificar se as informações já foram enviadas
         if (sharedValue == "none"){
             Toast.makeText(this,"Nenhuma Info. Vamos coletar!", Toast.LENGTH_SHORT).show()
             val uuid = UUID.randomUUID().toString()

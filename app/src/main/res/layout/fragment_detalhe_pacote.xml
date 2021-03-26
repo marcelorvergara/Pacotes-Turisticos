@@ -33,6 +33,7 @@
             android:layout_marginTop="116dp"
             android:layout_marginEnd="68dp"
             android:layout_marginRight="68dp"
+            android:fontFamily="serif"
             android:text="@string/comprar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDesc" />
@@ -45,6 +46,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="8dp"
             android:text="@{detalhePacoteViewModel.titulo}"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView11"
             tools:text="Título Pacote" />
@@ -54,9 +56,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@{detalhePacoteViewModel.valor}"
+            android:textSize="18sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/txtTitPkt"
             app:layout_constraintStart_toStartOf="@+id/textView12"
-            tools:text="TextView" />
+            tools:text="Valor
+" />
 
         <TextView
             android:id="@+id/txtDesc"
@@ -66,6 +70,7 @@
             android:layout_marginLeft="32dp"
             android:layout_marginTop="8dp"
             android:text="@{detalhePacoteViewModel.descricao}"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView13"
             tools:text="Detalhes do Pacote" />
@@ -77,7 +82,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="32dp"
+            android:fontFamily="serif"
             android:text="@string/pacote"
+            android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -87,7 +94,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="54dp"
             android:layout_marginRight="54dp"
+            android:fontFamily="serif"
             android:text="@string/valor"
+            android:textSize="22sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
             app:layout_constraintEnd_toEndOf="parent" />
 
@@ -98,7 +107,9 @@
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
             android:layout_marginTop="33dp"
+            android:fontFamily="serif"
             android:text="@string/descri_o_do_pacote"
+            android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgPktDetalhe" />
 

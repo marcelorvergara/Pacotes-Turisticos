@@ -36,6 +36,7 @@
             android:layout_marginLeft="16dp"
 
             android:layout_marginTop="30dp"
+            android:fontFamily="serif"
             android:text="@string/imagem_do_pacote"
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -48,6 +49,7 @@
             android:layout_marginTop="32dp"
             android:layout_marginEnd="58dp"
             android:layout_marginRight="58dp"
+            android:fontFamily="serif"
             android:text="@string/confirmar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_preview" />

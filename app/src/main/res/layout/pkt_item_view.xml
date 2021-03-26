@@ -24,10 +24,13 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"
-            tools:text="@string/nome_do_pacote_t_tulo"
+            android:fontFamily="serif-monospace"
+            android:textColor="@color/purple_700"
+            android:textSize="18sp"
             app:layout_constraintStart_toEndOf="@+id/imgPkt"
             app:layout_constraintTop_toTopOf="parent"
-            app:titulo="@{pacote}" />
+            app:titulo="@{pacote}"
+            tools:text="@string/nome_do_pacote_t_tulo" />
 
         <TextView
             android:id="@+id/txtValor"
@@ -35,10 +38,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            tools:text="@string/valor_do_pacote"
-            app:layout_constraintBaseline_toBaselineOf="@+id/txtTituloPkt"
-            app:layout_constraintStart_toEndOf="@+id/txtTituloPkt"
-            app:valor="@{pacote}" />
+            android:layout_marginTop="14dp"
+            android:fontFamily="serif-monospace"
+            android:textColor="@color/purple_700"
+            android:textSize="18sp"
+            app:layout_constraintStart_toEndOf="@+id/imgPkt"
+            app:layout_constraintTop_toBottomOf="@+id/txtTituloPkt"
+            app:valor="@{pacote}"
+            tools:text="@string/valor_do_pacote" />
 
         <ImageView
             android:id="@+id/imgPkt"
