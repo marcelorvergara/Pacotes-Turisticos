@@ -2,25 +2,17 @@ package com.mobicare.viajabessa.fragments.home
 
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.mobicare.viajabessa.R
+import com.mobicare.viajabessa.databinding.PktItemViewBinding
 import com.squareup.picasso.Picasso
 
-class HomeAdapter: RecyclerView.Adapter<HomeAdapter.ViewHolder> (){
-    var data = listOf<Pacote>()
-        set(value){
-            field = value
-            notifyDataSetChanged()
-        }
-
-    override fun getItemCount() = data.size
+class HomeAdapter: ListAdapter<Pacote, HomeAdapter.ViewHolder>(HomeDiffCallback()){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = data[position]
+        val item = getItem(position)
         holder.bind(item)
     }
 
@@ -28,29 +20,41 @@ class HomeAdapter: RecyclerView.Adapter<HomeAdapter.ViewHolder> (){
         return ViewHolder.from(parent)
     }
 
-    class ViewHolder private constructor(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class ViewHolder private constructor(val binding: PktItemViewBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(item:Pacote){
-            val res = itemView.context.resources
-            titulo.text = item.titulo
-            valor.text = item.valor
-            Log.d("Imagem", item.imageUrl)
-            if (item.imageUrl.startsWith("http", true)) {
-                Picasso.get().load(item.imageUrl).into(imagemPkt)
-            }
+//            val res = itemView.context.resources
+//            binding.txtTituloPkt.text = item.titulo
+//            binding.txtValor.text = item.valor
+//            Log.d("Imagem", item.imageUrl)
+//            if (item.imageUrl.startsWith("http", true)) {
+//                Picasso.get().load(item.imageUrl).into(binding.imgPkt)
+//            }
+            binding.pacote = item
+            binding.executePendingBindings()
         }
 
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val view = layoutInflater.inflate(R.layout.pkt_item_view, parent, false)
-                return ViewHolder(view)
+                val binding = PktItemViewBinding.inflate(layoutInflater,parent,false)
+                return ViewHolder(binding)
             }
         }
 
-        val titulo: TextView = itemView.findViewById(R.id.txtTituloPkt)
-        val valor: TextView = itemView.findViewById(R.id.txtValor)
-        val imagemPkt: ImageView = itemView.findViewById(R.id.imgPkt)
-
     }
 
+}
+
+class HomeDiffCallback: DiffUtil.ItemCallback<Pacote>(){
+    override fun areItemsTheSame(oldItem: Pacote, newItem: Pacote): Boolean {
+        return oldItem.uuid == newItem.uuid
+    }
+
+    override fun areContentsTheSame(oldItem: Pacote, newItem: Pacote): Boolean {
+        return oldItem == newItem
+    }
+}
+
+class HomeListener(val clickListener: (pacoteId: String) -> Unit){
+    fun onClick(pacote: Pacote) = clickListener(pacote.uuid)
 }

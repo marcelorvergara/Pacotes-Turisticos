@@ -52,7 +52,7 @@ class HomeFragment : Fragment() {
 
         viewModel.pkts.observe(viewLifecycleOwner, Observer {
             it.let {
-                adapter.data = it
+                adapter.submitList(it)
             }
         })
 

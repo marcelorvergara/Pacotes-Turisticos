@@ -6,12 +6,13 @@ data class Pacote(
     var titulo: String,
     var descricao: String,
     var valor: String,
-    var imageUrl: String
+    var imageUrl: String,
+    var uuid: String
 ): Serializable{
-    constructor() : this("","","","")
+    constructor() : this("","","","","")
 
     fun getPacotes():String{
-        val infos = "$titulo, $descricao, $valor, $imageUrl"
+        val infos = "$titulo, $descricao, $valor, $imageUrl, $uuid"
         return infos
     }
 }
