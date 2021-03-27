@@ -14,19 +14,23 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="126dp"
+        android:background="@color/teal_200"
         android:onClick="@{() -> clickListener.onClick(pacote)}">
 
         <TextView
             android:id="@+id/txtTituloPkt"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
             android:fontFamily="serif-monospace"
-            android:textColor="@color/purple_700"
-            android:textSize="18sp"
+            android:textColor="@color/white"
+            android:textSize="22sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/imgPkt"
             app:layout_constraintTop_toTopOf="parent"
             app:titulo="@{pacote}"
@@ -34,16 +38,17 @@
 
         <TextView
             android:id="@+id/txtValor"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="14dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="serif-monospace"
-            android:textColor="@color/purple_700"
-            android:textSize="18sp"
-            app:layout_constraintStart_toEndOf="@+id/imgPkt"
-            app:layout_constraintTop_toBottomOf="@+id/txtTituloPkt"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
+            app:layout_constraintEnd_toEndOf="parent"
             app:valor="@{pacote}"
             tools:text="@string/valor_do_pacote" />
 
@@ -53,13 +58,28 @@
             android:layout_height="76dp"
             android:layout_marginStart="8dp"
             android:layout_marginLeft="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="21dp"
             android:contentDescription="@string/imagem_do_pacote"
             app:imageUrl="@{pacote}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/divider"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@android:drawable/ic_delete" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
