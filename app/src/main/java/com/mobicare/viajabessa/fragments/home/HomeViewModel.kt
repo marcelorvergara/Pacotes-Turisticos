@@ -26,6 +26,9 @@ class HomeViewModel : ViewModel() {
             }
             _pkts.value = pacotesList
         }
+            .addOnFailureListener { fail ->
+                Log.e("falha",fail.toString())
+            }
     }
 
     //navegação

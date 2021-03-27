@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.mobicare.viajabessa.R
 import com.mobicare.viajabessa.databinding.FragmentDetalhePacoteBinding
 import com.mobicare.viajabessa.databinding.FragmentHomeBinding
@@ -46,7 +47,14 @@ class DetalhePacoteFragment : Fragment() {
         viewModel.valor = args.pacote.valor
         viewModel.descricao = args.pacote.descricao
 
-        Picasso.get().load(args.pacote.imageUrl).into(binding.imgPktDetalhe)
+        if(args.pacote.imageUrl.startsWith("http",false)){
+            Picasso.get().load(args.pacote.imageUrl).into(binding.imgPktDetalhe)
+        }
+
+        //voltar
+        binding.btnVoltaDet.setOnClickListener {
+            findNavController().navigate(R.id.action_detalhePacoteFragment_to_homeFragment)
+        }
 
         //Toast.makeText(context,"Título do Pacote: ${args.pacote.titulo}",Toast.LENGTH_SHORT).show()
 

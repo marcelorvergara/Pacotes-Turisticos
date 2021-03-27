@@ -61,5 +61,8 @@
         <argument
             android:name="pacote"
             app:argType="com.mobicare.viajabessa.fragments.home.Pacote" />
+        <action
+            android:id="@+id/action_detalhePacoteFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

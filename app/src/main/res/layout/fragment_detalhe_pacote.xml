@@ -20,7 +20,7 @@
             android:layout_height="119dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="24dp"
             android:contentDescription="@string/imagem_do_pacote"
             android:src="@android:drawable/ic_delete"
             app:layout_constraintStart_toStartOf="parent"
@@ -30,9 +30,9 @@
             android:id="@+id/btnComprar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="116dp"
-            android:layout_marginEnd="68dp"
-            android:layout_marginRight="68dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:fontFamily="serif"
             android:text="@string/comprar"
             app:layout_constraintEnd_toEndOf="parent"
@@ -92,13 +92,13 @@
             android:id="@+id/textView12"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="54dp"
-            android:layout_marginRight="54dp"
+            android:layout_marginStart="64dp"
+            android:layout_marginLeft="64dp"
             android:fontFamily="serif"
             android:text="@string/valor"
             android:textSize="22sp"
             app:layout_constraintBaseline_toBaselineOf="@+id/textView11"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/txtTitPkt" />
 
         <TextView
             android:id="@+id/textView13"
@@ -112,6 +112,17 @@
             android:textSize="22sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imgPktDetalhe" />
+
+        <Button
+            android:id="@+id/btnVoltaDet"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:fontFamily="serif"
+            android:text="@string/voltar"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btnComprar"
+            app:layout_constraintEnd_toStartOf="@+id/btnComprar" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -74,6 +74,11 @@ class ImagemPacoteFragment : Fragment() {
         //inicializando o imageView
         imageView = binding.imagePreview
 
+        //voltar
+        binding.btnVoltarImg.setOnClickListener {
+            findNavController().navigate(R.id.action_imagemPacoteFragment_to_novoPacoteFragment)
+        }
+
         return binding.root
     }
 
